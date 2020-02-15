@@ -92,3 +92,31 @@ def makepaths(conf):
     tf.gfile.MakeDirs(conf.summary_path)
 
     return conf
+
+def get_label(file_path):
+  # convert the path to a list of path components
+
+  parts = str(file_path).split(os.path.sep)
+  
+  # The second to last is the class-directory
+  return parts[-2] == CLASS_NAMES
+
+def decode_img(img):
+  # convert the compressed string to a 3D uint8 tensor
+
+  img = tf.convert_to_tensor(img, dtype=tf.int32)
+
+  # Use `convert_image_dtype` to convert to floats in the [0,1] range.
+  img = tf.image.convert_image_dtype(img, tf.float32)
+  # resize the image to the desired size.
+  # return tf.image.resize(img, [IMG_WIDTH, IMG_HEIGHT])
+  return img
+
+def process_path(file_path):
+  label = get_label(file_path)
+  # load the raw data from the file as a string
+#   print(file_path)
+  img = np.array(Image.open(file_path))
+  # img = tf.io.read_file(file_path)
+  img = decode_img(img)
+  return img, label
