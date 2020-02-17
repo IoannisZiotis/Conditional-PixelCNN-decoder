@@ -33,8 +33,11 @@ def train(conf, data):
                     batch_X = binarize(batch_X.reshape([conf.batch_size, \
                             conf.img_height, conf.img_width, conf.channel]))
                     batch_y = one_hot(batch_y, conf.num_classes) 
-                else:
+                elif conf.data == "cifar":
                     batch_X, pointer = get_batch(data, pointer, conf.batch_size)
+                else:
+                    gen = gen2()
+                    batch_X, pointer = next(gen)
                 data_dict = {X:batch_X}
                 if conf.conditional is True:
                     data_dict[model.h] = batch_y
