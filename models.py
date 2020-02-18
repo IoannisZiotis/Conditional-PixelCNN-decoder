@@ -5,7 +5,10 @@ from keras_applications import get_submodules_from_kwargs
 from keras_applications import imagenet_utils
 from keras_applications.imagenet_utils import decode_predictions
 from keras_applications.imagenet_utils import _obtain_input_shape
+from keras_applications import resnet
 
+from tensorflow.python.keras.applications import keras_modules_injection
+from tensorflow.python.util.tf_export import keras_export
 preprocess_input = imagenet_utils.preprocess_input
 
 backend = None
@@ -195,6 +198,10 @@ def ResNet500(include_top=True,
     model = models.Model(inputs, x, name='resnet50',)
 
     return model
+
+@keras_modules_injection
+def ResNet50(*args, **kwargs):
+  return ResNet500(*args, **kwargs)
 
 class PixelCNN(object):
     def __init__(self, X, conf, full_horizontal=True, h=None):
