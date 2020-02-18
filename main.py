@@ -8,7 +8,8 @@ from utils import *
 def train(conf, data):
     X = tf.placeholder(tf.float32, shape=[None, conf.img_height, conf.img_width, conf.channel])
     model = PixelCNN(X, conf)
-
+    model_en = ResNet50(classes=2,input_shape=(64,64,3),pooling='max',weights=None,include_top=False)
+    
     trainer = tf.train.RMSPropOptimizer(1e-3)
     gradients = trainer.compute_gradients(model.loss)
 
