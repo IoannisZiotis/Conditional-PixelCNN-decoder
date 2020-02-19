@@ -1,7 +1,7 @@
 import tensorflow as tf
 import numpy as np
 import argparse
-from models import PixelCNN
+import models
 from autoencoder import *
 from utils import *
 
