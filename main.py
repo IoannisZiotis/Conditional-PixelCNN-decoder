@@ -41,7 +41,8 @@ def train(conf, data):
                 else:
                     gen = gen2()
                     batch_X, pointer = next(gen)
-                data_dict = {X:batch_X}
+                encoded = model_en.predict(batch_X)
+                data_dict = {X:encoded}
                 if conf.conditional is True:
                     data_dict[model.h] = batch_y
                 _, cost = sess.run([optimizer, model.loss], feed_dict=data_dict)
