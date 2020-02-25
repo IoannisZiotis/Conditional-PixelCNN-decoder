@@ -11,7 +11,7 @@ from keras_applications.imagenet_utils import decode_predictions
 from keras_applications.imagenet_utils import _obtain_input_shape
 from keras_applications import resnet
 
-from tensorflow.python.keras_applications import keras_modules_injection
+from tensorflow.python.keras.applications import keras_modules_injection
 from tensorflow.python.util.tf_export import keras_export
 preprocess_input = imagenet_utils.preprocess_input
 
