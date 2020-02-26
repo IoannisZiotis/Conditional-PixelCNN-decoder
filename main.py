@@ -55,7 +55,7 @@ def train(conf, data):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
-    parser.add_argument('--data', type=str, default='mnist')
+    parser.add_argument('--data', type=str, default='')
     parser.add_argument('--layers', type=int, default=12)
     parser.add_argument('--f_map', type=int, default=32)
     parser.add_argument('--epochs', type=int, default=50)
