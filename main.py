@@ -73,10 +73,10 @@ if __name__ == "__main__":
 #         if not os.path.exists(conf.data_path):
 #             os.makedirs(conf.data_path)
 #         data = input_data.read_data_sets(conf.data_path)
-#         conf.num_classes = 10
-#         conf.img_height = 28
-#         conf.img_width = 28
-#         conf.channel = 1
+          conf.num_classes = 10
+          conf.img_height = 28
+          conf.img_width = 28
+          conf.channel = 1
 #         conf.num_batches = data.train.num_examples // conf.batch_size
     else:
         from keras.datasets import cifar10
